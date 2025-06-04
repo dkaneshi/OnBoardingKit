@@ -8,6 +8,7 @@ Use this as a Laravel project starting point. It contains packages and helpful m
 * Laravel 12 with no starter kit
     * Uses the default database SQLite
 * Laravel Pint configuration file called ```pint.json```
+* Pest PHP testing framework (XDebug must be installed to use code coverage capability)
 
 ### Changes to ```composer.json``` 
 Allows you to run linting and testing commands using composer as opposed to calling ```vendor/bin/<some_program>```
@@ -18,8 +19,10 @@ Allows you to run linting and testing commands using composer as opposed to call
             ...,
             "lint": "pint",
             "test:lint": "pint --test",
+            "test:unit": "pest --parallel --coverage --recreate-databases",
             "test": [
                 "@php artisan config:clear --ansi",
+                "@test:unit",
                 "@test:lint",
             ]
         },
