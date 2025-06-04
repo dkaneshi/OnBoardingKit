@@ -7,9 +7,10 @@ Use this as a Laravel project starting point. It contains packages and helpful m
 ### What is installed?
 * Laravel 12 with no starter kit
     * Uses the default database SQLite
-* Pint configuration file called ```pint.json```
+* Laravel Pint configuration file called ```pint.json```
 
 ### Changes to ```composer.json``` 
+Allows you to run linting and testing commands using composer as opposed to calling ```vendor/bin/<some_program>```
 ```json
 {
     ...
