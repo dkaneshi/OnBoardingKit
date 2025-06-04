@@ -10,6 +10,7 @@ Use this as a Laravel project starting point. It contains packages and helpful m
 * Laravel Pint (already comes with Laravel) 
   * Added configuration file called ```pint.json```
 * Pest PHP testing framework (XDebug must be installed to use code coverage capability)
+  * Laravel plugin
 * Larastan code analysis tool (It's like TypeScript for PHP)
   * Added configuration file called ```phpstan.neon```
 
