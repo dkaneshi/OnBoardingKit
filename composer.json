@@ -10,18 +10,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^12.0",
+        "laravel/framework": "^12.20",
         "laravel/tinker": "^2.10.1"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.23",
-        "larastan/larastan": "^3.4",
-        "laravel/pail": "^1.2.2",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.41",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.6",
-        "pestphp/pest": "^3.8",
+        "fakerphp/faker": "^1.24.1",
+        "larastan/larastan": "^3.5",
+        "laravel/pail": "^1.2.3",
+        "laravel/pint": "^1.24",
+        "laravel/sail": "^1.43.1",
+        "mockery/mockery": "^1.6.12",
+        "nunomaduro/collision": "^8.8.2",
+        "pestphp/pest": "^3.8.2",
         "pestphp/pest-plugin-laravel": "^3.2"
     },
     "autoload": {
@@ -56,8 +56,19 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
-        "lint": "pint",
-        "test:lint": "pint --test",
+        "fix": [
+            "@test:types",
+            "npm run lint:fix",
+            "pint"
+        ],
+        "lint": [
+            "pint",
+            "npm run lint"
+        ],
+        "test:lint": [
+            "pint --test",
+            "npm run test:lint"
+        ],
         "test:unit": "pest --parallel --coverage --recreate-databases",
         "test:types": [
             "phpstan --memory-limit=512M"
