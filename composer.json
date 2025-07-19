@@ -22,7 +22,8 @@
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.8.2",
         "pestphp/pest": "^3.8.2",
-        "pestphp/pest-plugin-laravel": "^3.2"
+        "pestphp/pest-plugin-laravel": "^3.2",
+        "rector/rector": "^2.1"
     },
     "autoload": {
         "psr-4": {
@@ -56,8 +57,10 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
+        "refactor": "rector process",
         "fix": [
             "@test:types",
+            "@refactor",
             "npm run lint:fix",
             "pint"
         ],
@@ -73,6 +76,7 @@
         "test:types": [
             "phpstan --memory-limit=512M"
         ],
+        "test:refactor": "rector process --dry-run",
         "test": [
             "@php artisan config:clear --ansi",
             "@test:unit",
